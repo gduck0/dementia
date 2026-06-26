@@ -1,0 +1,53 @@
+# --- 기본: 모두 무시 ---
+Assets/**
+ProjectSettings/**
+Library/**
+Logs/**
+Temp/**
+Obj/**
+UserSettings/**
+MemoryCaptures/**
+Builds/**
+*.unity
+*.prefab
+*.mat
+*.asset
+*.anim
+*.controller
+*.fbx
+*.psd
+*.png
+*.jpg
+*.jpeg
+*.tga
+*.tif
+*.wav
+*.mp3
+*.ogg
+*.mp4
+*.dll
+*.zip
+*.7z
+
+# --- 허용: 스크립트 폴더 + 메타 ---
+!Assets/Scripts/
+Assets/Scripts/**/*
+!Assets/Scripts/**/*.cs
+!Assets/Scripts/**/*.asmdef
+!Assets/Scripts/**/*.meta
+
+# --- 재현성: 패키지/버전 ---
+!Packages/
+!Packages/manifest.json
+!Packages/packages-lock.json
+!ProjectSettings/ProjectVersion.txt
+
+# (선택) 에디터 설정 일부 필요하면 개별 허용
+#!ProjectSettings/EditorSettings.asset
+
+# OS / IDE
+.DS_Store
+.vscode/
+*.code-workspace
+.idea/
+*.swp

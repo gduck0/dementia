@@ -1,0 +1,26 @@
+name: Block non-code or large files
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reject large or banned files
+        shell: bash
+        run: |
+          set -euo pipefail
+          # 10MB 초과 파일 차단
+          LARGE=$(git ls-files -z | xargs -0 -I{} bash -lc 'test -f "{}" && [ $(stat -c%s "{}") -gt 10485760 ] && echo "{}"' || true)
+          if [ -n "${LARGE}" ]; then
+            echo "::error::10MB 초과 파일이 있습니다. 에셋은 커밋하지 마세요."
+            echo "${LARGE}"
+            exit 1
+          fi
+          # 금지 확장자 차단
+          if git ls-files '*.png' '*.jpg' '*.jpeg' '*.psd' '*.tga' '*.tif' '*.fbx' '*.wav' '*.mp3' '*.ogg' '*.mp4' '*.unity' '*.prefab' 2>/dev/null | grep .; then
+            echo "::error::에셋/씬/프리팹 파일 커밋 금지. 스크립트만 제출하세요."
+            git ls-files '*.png' '*.jpg' '*.jpeg' '*.psd' '*.tga' '*.tif' '*.fbx' '*.wav' '*.mp3' '*.ogg' '*.mp4' '*.unity' '*.prefab' || true
+            exit 1
+          fi

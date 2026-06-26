@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.9",
+    "com.unity.inputsystem": "1.7.0"
+  },
+  "scopedRegistries": [],
+  "registry": "https://packages.unity.com"
+}
