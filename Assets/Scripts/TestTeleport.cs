@@ -46,7 +46,7 @@ public class TestTeleport : MonoBehaviour
         // InputActionManager가 관리하는 모든 Action Asset 비활성화
         foreach (var asset in inputActionManager.actionAssets)
         {
-            asset.Disable();     // ⭐ 이동/회전/시선 입력 완전히 차단됨
+            asset.Disable();     // 해당 Action Asset 비활성화
         }
 
     }
