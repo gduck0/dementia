@@ -29,7 +29,7 @@ public class GazeRazcaster : MonoBehaviour
             }
         }
 
-        // ¾Æ¹«°Íµµ ¾È º¸¸é null Àü´Ş
+        // ì•„ë¬´ê²ƒë„ ì•ˆ ë³´ë©´ null ì „ë‹¬
         OnGazeTarget?.Invoke(null);
     }
 }
